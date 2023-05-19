@@ -1,28 +1,7 @@
 /*
-	In command substitute ^LIST^ where the original wordlist would go
-	wordlist will then dynamically create a new wordlist for each chunk
-	and run the command for each chunk generated.
-
-	Syntax is wordlist [dictionary file] "[cmd]" [word format]
-	ex. wordlist.txt "echo ^LIST^" 2@@@@@@@@@@@@$
-
-	Word format...
-			prefix with number 1-9 = number of unique words
-	        @ = sequence of letters that form words
-			$ = symbols
-			! = numbers
-
-			ex. 2@@@@@@@@@@@@$ = sequence of 12 letters that form 2 words followed by a symbol
-
 	TODO
-	- !!!REDO Wordgen to accomodate new word format function!!!
-	    - implement all necessary StringIterator functions
-
-	- modularize (make classes for each function of the program)
+	- add support for session resuming
 	- add support for batch files
-	- add more error handling
-	- add support for multiple wordlists
-	- add support for urls
 	- clean up code
 	- document code
 */
