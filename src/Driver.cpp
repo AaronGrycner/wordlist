@@ -12,20 +12,21 @@
 int main(int argc, char* argv[]) {
 	Wordlist *list = nullptr;
 	int returnval{};
+	vector<string> args;
 
-	if ( argc != 4) {
-		cout << "Usage: " << argv[0] << " <dictionary files seperated by commas> \"<command>\" <word format>" << endl;
-		return 999;
-	}
-	try {
-		list = new Wordlist(argv[1], argv[2], argv[3]);
-	}
-	catch (FileNotOpen e) {
-				cout << endl << e.msg << endl;
-		return e.code;
+	// put argv into vector
+	for (int i{}; i < argc; ++i) {
+		args.push_back(argv[i]);
 	}
 
+	if (argc != 4 && argc != 2) {
+		cout << "Usage: " << argv[0] << " <dictionary files seperated by commas> \"<command>\" <word format>   or," << endl 
+			<< "dictionary -r to resume previous session";
+		return -1;
+	}
+
 	try {
+		list = new Wordlist(argc, args);
 		returnval = list->run();
 	}
 	catch (Exception e) {

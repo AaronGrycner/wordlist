@@ -19,7 +19,7 @@ class Cmd
 private:
 	string cmd, path;
 	vector<string> chunk;
-	int index{}, fcount{};// index is the position of the list indicator character
+	int index{}, fcount{-1};// index is the position of the list indicator character
 	void parse_inputted_command();
 	string get_command(); // returns the next valid command to execute, takes the current file number as an argument
 	void write_chunk(vector<string> chunk);

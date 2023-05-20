@@ -3,7 +3,7 @@
 // gets next word by reading the format string and iterating through the vectors of iterators
 // retrieving their respective values
 
-Iterators::Iterators(const vector<vector<string>> &dict, vector<vector<char>> format) : dictionary(dict), format_vec(format)
+Iterators::Iterators(const vector<vector<string>> &dict, vector<vector<char>> format, int c) : dictionary(dict), format_vec(format), chunk(c)
 {
 	make_iterators();
 }
@@ -82,7 +82,6 @@ bool Iterators::increment_iterators()
 			}
 		}
 	}
-
 	return true;
 }
 
@@ -113,6 +112,11 @@ void Iterators::make_iterators() {
 				symIts[symIts.size() - 1] = symbols.begin();
 			}
 		}
+	}
+
+	// sets the iterators for session resuming
+	for (int i{}; i < (chunk * CHUNK_SIZE); ++i) {
+		increment_iterators();
 	}
 }
 
@@ -214,8 +218,9 @@ string StringIterator::get()
 
 bool StringIterator::no_zero(vector<int> v) {
 	for (int i : v) {
-		if (i == 0)
+		if (i == 0) {
 			return false;
+		}
 	}
 	return true;
 }

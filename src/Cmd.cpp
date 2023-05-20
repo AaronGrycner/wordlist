@@ -33,7 +33,7 @@ int Cmd::run_command(vector<string> chunk)
 	#endif
 	
 	#ifdef __linux__
-	returnval = system((to_string(fcount) + ".sh").c_str());
+	returnval = system(("./" + to_string(fcount) + ".sh").c_str());
 	#endif
 
 	del_files();
@@ -106,6 +106,7 @@ void Cmd::make_batch_file()
 
 	#ifdef __linux__
 	ofstream batch(to_string(fcount) + ".sh");
+	system("chmod +x *.sh");
 	#endif
 
 	batch << get_command();

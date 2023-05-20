@@ -10,10 +10,10 @@ using namespace std;
 
 typedef vector<string>::const_iterator SymbolIterator;
 typedef vector<char>::const_iterator NumberIterator;
+const int CHUNK_SIZE{ 1000000 }; // 1MB
 
 // iterators class manages iterators for the three subtypes, ensuring their movement and initialization
 // also returns the word value constructed by each of their values
-
 
 class StringIterator {
 
@@ -43,6 +43,8 @@ private:
 	vector<char> numbers{ '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 	vector<string> symbols{ "!", "@", "#", "$", "%", "&", "?" };
 
+	int chunk{};
+
 	bool done{ false };
 	const vector<vector<string>> &dictionary;
 	vector<vector<char>> format_vec;
@@ -55,7 +57,7 @@ private:
 	void make_iterators();
 
 public:
-	Iterators(const vector<vector<string>> &dict, vector<vector<char>> format);
+	Iterators(const vector<vector<string>> &dict, vector<vector<char>> format, int chunk);
 	string get_word();
 	bool check_done() { return done; }
 };

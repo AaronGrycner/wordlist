@@ -14,7 +14,7 @@ using namespace std;
 class WordGen
 {
 private:
-	string format_string;
+	string mask;
 
 	vector<vector<string>> dictionary;
 
@@ -25,7 +25,7 @@ private:
 	void check_valid_entry();
 
 public:
-	WordGen(vector<vector<string>> dict, string format);
+	WordGen(vector<vector<string>> dict, string mask, int chunk);
 	bool is_done() { return its->check_done(); }
 	string next_word();
 };

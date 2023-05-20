@@ -8,8 +8,6 @@
 #include <sstream>
 #include "Excepts.h"
 
-const int CHUNK_SIZE{ 1000000 }; // 1MB
-
 using namespace std;
 
 // in charge of getting dictionary data from file/files

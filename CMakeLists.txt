@@ -9,7 +9,9 @@ if (POLICY CMP0141)
   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
 endif()
 
-project ("wordlist")
+project (wordlist)
 
-# Include sub-projects.
-add_subdirectory ("wordlist")
+add_executable(wordlist src/Cmd.cpp src/Driver.cpp src/Iterators.cpp src/Reader.cpp src/WordGen.cpp src/Wordlist.cpp include/Cmd.h include/Iterators.h include/Reader.h include/WordGen.h include/Wordlist.h include/Excepts.h include/Header.h include/SessionFile.h)
+set_property(TARGET wordlist PROPERTY CXX_STANDARD 20)
+
+target_include_directories(wordlist PUBLIC "include")
