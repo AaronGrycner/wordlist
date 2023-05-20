@@ -33,7 +33,7 @@ int Cmd::run_command(vector<string> chunk)
 	#endif
 	
 	#ifdef __linux__
-	returnval = system("."(to_string(fcount) + ".sh").c_str());
+	returnval = system((to_string(fcount) + ".sh").c_str());
 	#endif
 
 	del_files();
